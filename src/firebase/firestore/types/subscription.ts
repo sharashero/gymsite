@@ -1,5 +1,4 @@
 import {
-  TObject,
   TObjectCreate,
   TObjectRead,
   TObjectUpdate,
@@ -7,15 +6,14 @@ import {
 } from "./common";
 
 
-const Subscsription = {
-  start: Date,
-  end: Date,
-  nOfSessions: Number,
-  checkIns: Array<Date>,
+type TSubscsription = {
+  start: Date;
+  end: Date;
+  nOfSessions: number;
+  checkIns: Array<Date>;
 };
 
 
-export type TSubscsription = TObject<typeof Subscsription>;
 export type TSubscsriptionRead = TObjectRead;
 export type TSubscsriptionDelete = TObjectDelete;
 export type TSubscsriptionCreate = TObjectCreate<TSubscsription>;

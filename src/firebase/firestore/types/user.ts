@@ -1,5 +1,4 @@
 import {
-  TObject,
   TObjectCreate,
   TObjectRead,
   TObjectUpdate,
@@ -7,18 +6,17 @@ import {
 } from "./common";
 
 
-const User = {
-  name: String,
-  role: String,
-  email: String,
-  photoURL: String,
-  height: Number,
-  dateOfBirth: Date,
-  phoneNumber: String,
+type TUser = {
+  name: string;
+  role: string;
+  email: string;
+  photoURL: string;
+  height: number;
+  dateOfBirth: Date;
+  phoneNumber: string;
 };
 
 
-export type TUser = TObject<typeof User>;
 export type TUserRead = TObjectRead;
 export type TUserDelete = TObjectDelete;
 export type TUserCreate = TObjectCreate<TUser>;

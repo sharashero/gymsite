@@ -1,5 +1,4 @@
 import {
-  TObject,
   TObjectCreate,
   TObjectRead,
   TObjectUpdate,
@@ -7,13 +6,12 @@ import {
 } from "./common";
 
 
-const Payment = {
-  amount: Number,
-  timestamp: Date,
+type TPayment = {
+  amount: number;
+  timestamp: Date;
 };
 
 
-export type TPayment = TObject<typeof Payment>;
 export type TPaymentRead = TObjectRead;
 export type TPaymentDelete = TObjectDelete;
 export type TPaymentCreate = TObjectCreate<TPayment>;
