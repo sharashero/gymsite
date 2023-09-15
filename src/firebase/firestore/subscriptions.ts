@@ -21,20 +21,20 @@ export function createSub(userId: string, sub: TSubscsriptionCreate) {
 
 export function readSub(userId: string, sub: TSubscsriptionRead) {
   readDocument<TSubscsriptionRead>("users", [
-    userId, "susbscriptions",  sub.id
+    userId, "susbscriptions", sub.id
   ]);
 }
 
 
 export function updateSub(userId: string, sub: TSubscsriptionUpdate) {
   updateDocument<TSubscsriptionUpdate>("users", [
-    userId, "susbscriptions",  sub.id
+    userId, "susbscriptions", sub.id
   ], sub);
 }
 
 
 export function deleteSub(userId: string, sub: TSubscsriptionDelete) {
   deleteDocument<TSubscsriptionDelete>("users", [
-    userId, "susbscriptions",  sub.id
+    userId, "susbscriptions", sub.id
   ]);
 }

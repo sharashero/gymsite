@@ -21,20 +21,20 @@ export function createPayment(userId: string, payment: TPaymentCreate) {
 
 export function readPayment(userId: string, payment: TPaymentRead) {
   readDocument<TPaymentRead>("users", [
-    userId, "payments",  payment.id
+    userId, "payments", payment.id
   ]);
 }
 
 
 export function updatePayment(userId: string, payment: TPaymentUpdate) {
   updateDocument<TPaymentUpdate>("users", [
-    userId, "payments",  payment.id
+    userId, "payments", payment.id
   ], payment);
 }
 
 
 export function deletePayment(userId: string, payment: TPaymentDelete) {
   deleteDocument<TPaymentDelete>("users", [
-    userId, "payments",  payment.id
+    userId, "payments", payment.id
   ]);
 }
