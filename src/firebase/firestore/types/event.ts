@@ -18,7 +18,7 @@ type TEvent = {
   view: boolean;
   toTimestamp: Date;
   fromTimestamp: Date;
-  registeredUsers: Array<TUserRegistration>;
+  registeredUsers: TUserRegistration[];
 };
 
 

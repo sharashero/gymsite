@@ -10,7 +10,7 @@ type TSubscsription = {
   start: Date;
   end: Date;
   nOfSessions: number;
-  checkIns: Array<Date>;
+  checkIns: Date[];
 };
 
 
