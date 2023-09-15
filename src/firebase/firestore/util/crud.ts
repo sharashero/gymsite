@@ -2,7 +2,7 @@ import {
   doc,
   addDoc,
   getDoc,
-  updateDoc,
+  setDoc,
   deleteDoc,
   collection,
   getFirestore,
@@ -43,7 +43,7 @@ export async function updateDocument
     path,
     ...pathSegments
   ).withConverter(createConverter<Type>());
-  return updateDoc(ref, document);
+  return setDoc(ref, document, { merge: true });
 }
 
 

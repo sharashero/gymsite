@@ -2,17 +2,18 @@ import {
   Timestamp,
   QueryDocumentSnapshot,
   FirestoreDataConverter,
+  DocumentData,
 } from "firebase/firestore";
 import { TDocument } from "../types/common";
 
 
 function toFirestore
 <Type extends TDocument>
-(modelObject: Type) {
+(modelObject: Type): DocumentData {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { id, ...rest } = modelObject;
 
-  for (const key in Object.keys(rest)) {
+  for (const key of Object.keys(rest)) {
     if (rest[key] === undefined) {
       delete rest[key];
     }
