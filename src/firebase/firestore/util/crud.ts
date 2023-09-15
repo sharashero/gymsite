@@ -24,7 +24,7 @@ export async function createDocument
 
 
 export async function readDocument
-<Type extends TDocument>
+<Type extends Required<TDocument>>
 (path: string, pathSegments: string[]) {
   const ref = doc(
     getFirestore(),
@@ -36,7 +36,7 @@ export async function readDocument
 
 
 export async function updateDocument
-<Type extends TDocument>
+<Type extends Required<TDocument>>
 (path: string, pathSegments: string[], document: Type) {
   const ref = doc(
     getFirestore(),
@@ -48,7 +48,7 @@ export async function updateDocument
 
 
 export async function deleteDocument
-<Type extends TDocument>
+<Type extends Required<TDocument>>
 (path: string, pathSegments: string[]) {
   const ref = doc(
     getFirestore(),
