@@ -13,28 +13,28 @@ import {
 
 
 export function createSub(userId: string, sub: TSubscsriptionCreate) {
-  createDocument<TSubscsriptionCreate>("users", [
+  return createDocument<TSubscsriptionCreate>("users", [
     userId, "susbscriptions"
   ], sub);
 }
 
 
 export function readSub(userId: string, sub: TSubscsriptionRead) {
-  readDocument<TSubscsriptionRead>("users", [
+  return readDocument<TSubscsriptionRead>("users", [
     userId, "susbscriptions", sub.id
   ]);
 }
 
 
 export function updateSub(userId: string, sub: TSubscsriptionUpdate) {
-  updateDocument<TSubscsriptionUpdate>("users", [
+  return updateDocument<TSubscsriptionUpdate>("users", [
     userId, "susbscriptions", sub.id
   ], sub);
 }
 
 
 export function deleteSub(userId: string, sub: TSubscsriptionDelete) {
-  deleteDocument<TSubscsriptionDelete>("users", [
+  return deleteDocument<TSubscsriptionDelete>("users", [
     userId, "susbscriptions", sub.id
   ]);
 }

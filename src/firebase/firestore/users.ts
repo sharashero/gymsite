@@ -13,20 +13,20 @@ import {
 
 
 export function createUser(user: TUserCreate) {
-  createDocument<TUserCreate>("users", [], user);
+  return createDocument<TUserCreate>("users", [], user);
 }
 
 
 export function readUser(user: TUserRead) {
-  readDocument<TUserRead>("users", [user.id]);
+  return readDocument<TUserRead>("users", [user.id]);
 }
 
 
 export function updateUser(user: TUserUpdate) {
-  updateDocument<TUserUpdate>("users", [user.id], user);
+  return updateDocument<TUserUpdate>("users", [user.id], user);
 }
 
 
 export function deleteUser(user: TUserDelete) {
-  deleteDocument<TUserDelete>("users", [user.id]);
+  return deleteDocument<TUserDelete>("users", [user.id]);
 }

@@ -13,20 +13,20 @@ import {
 
 
 export function createEvent(event: TEventCreate) {
-  createDocument<TEventCreate>("events", [], event);
+  return createDocument<TEventCreate>("events", [], event);
 }
 
 
 export function readEvent(event: TEventRead) {
-  readDocument<TEventRead>("events", [event.id]);
+  return readDocument<TEventRead>("events", [event.id]);
 }
 
 
 export function updateEvent(event: TEventUpdate) {
-  updateDocument<TEventUpdate>("events", [event.id], event);
+  return updateDocument<TEventUpdate>("events", [event.id], event);
 }
 
 
 export function deleteEvent(event: TEventDelete) {
-  deleteDocument<TEventDelete>("events", [event.id]);
+  return deleteDocument<TEventDelete>("events", [event.id]);
 }

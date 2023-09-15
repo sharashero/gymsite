@@ -13,28 +13,28 @@ import {
 
 
 export function createPayment(userId: string, payment: TPaymentCreate) {
-  createDocument<TPaymentCreate>("users", [
+  return createDocument<TPaymentCreate>("users", [
     userId, "payments"
   ], payment);
 }
 
 
 export function readPayment(userId: string, payment: TPaymentRead) {
-  readDocument<TPaymentRead>("users", [
+  return readDocument<TPaymentRead>("users", [
     userId, "payments", payment.id
   ]);
 }
 
 
 export function updatePayment(userId: string, payment: TPaymentUpdate) {
-  updateDocument<TPaymentUpdate>("users", [
+  return updateDocument<TPaymentUpdate>("users", [
     userId, "payments", payment.id
   ], payment);
 }
 
 
 export function deletePayment(userId: string, payment: TPaymentDelete) {
-  deleteDocument<TPaymentDelete>("users", [
+  return deleteDocument<TPaymentDelete>("users", [
     userId, "payments", payment.id
   ]);
 }
