@@ -20,7 +20,7 @@ const buttonVariants = {
 
 const buttonSizes = {
   sm: "gap-1 rounded-md px-2 py-1 text-sm",
-  md: "gap-2 rounded-lg px-4 py-2 text-base font-bold",
+  md: "gap-2 rounded-lg px-4 py-2 text-base",
 };
 
 
