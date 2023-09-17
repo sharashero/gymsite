@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 body {
-  font-family: Lexend;
+  @apply font-[lexend] bg-gray-100;
 }
