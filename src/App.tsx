@@ -4,6 +4,9 @@ import { useUser } from "./contexts/user";
 import { useLoading } from "./contexts/loading";
 
 
+import Loading from "./layouts/Loading";
+
+
 function App() {
   const user = useUser();
   const loading = useLoading();
@@ -11,7 +14,7 @@ function App() {
   let layout = null;
 
   if (loading) {
-    layout = null;
+    layout = <Loading />;
   }
   else if (!user) {
     layout = null;
