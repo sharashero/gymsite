@@ -3,7 +3,7 @@ import { twMerge } from "tailwind-merge";
 
 
 interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
-  size?: "sm" | "md";
+  size?: "sm" | "md" | "lg";
   variant?: "primary" | "outline" | "success" | "outline-success" | "danger" | "outline-danger";
 }
 
@@ -21,6 +21,7 @@ const buttonVariants = {
 const buttonSizes = {
   sm: "gap-1 rounded-md px-2 py-1 text-sm",
   md: "gap-2 rounded-lg px-4 py-2 text-base",
+  lg: "gap-4 rounded-2xl px-8 py-4 text-xl",
 };
 
 
