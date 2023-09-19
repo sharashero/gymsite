@@ -5,7 +5,7 @@ import { useLoading } from "./contexts/loading";
 
 
 import Loading from "./layouts/Loading";
-const LoggetOut = lazy(() => import("./layouts/LoggedOut"));
+const LoggedOut = lazy(() => import("./layouts/LoggedOut"));
 
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
     layout = <Loading />;
   }
   else if (!user) {
-    layout = <LoggetOut />;
+    layout = <LoggedOut />;
   }
   else if (user.role === "admin") {
     layout = null;
