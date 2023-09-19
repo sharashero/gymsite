@@ -9,12 +9,12 @@ interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 
 const buttonVariants = {
-  primary: "bg-blue-500 text-white hover:bg-blue-600",
-  success: "bg-green-500 text-white hover:bg-green-600",
-  danger: "bg-red-500 text-white hover:bg-red-600",
-  "outline": "border-2 border-blue-500 text-blue-500 hover:border-blue-600 hover:bg-blue-50 hover:text-blue-600",
-  "outline-success": "border-2 border-green-500 text-green-500 hover:border-green-600 hover:bg-green-50 hover:text-green-600",
-  "outline-danger": "border-2 border-red-500 text-red-500 hover:border-red-600 hover:bg-red-50 hover:text-red-600",
+  primary: "bg-blue-500 text-white enabled:hover:bg-blue-600",
+  success: "bg-green-500 text-white enabled:hover:bg-green-600",
+  danger: "bg-red-500 text-white enabled:hover:bg-red-600",
+  "outline": "border-2 border-blue-500 text-blue-500 enabled:hover:border-blue-600 enabled:hover:bg-blue-50 enabled:hover:text-blue-600",
+  "outline-success": "border-2 border-green-500 text-green-500 enabled:hover:border-green-600 enabled:hover:bg-green-50 enabled:hover:text-green-600",
+  "outline-danger": "border-2 border-red-500 text-red-500 enabled:hover:border-red-600 enabled:hover:bg-red-50 enabled:hover:text-red-600",
 };
 
 
@@ -37,7 +37,11 @@ function Button({
 
   return (
     <button
-      className={twMerge("flex items-center", styleSize, styleVariant)}
+      className={twMerge(
+        "flex items-center disabled:cursor-wait",
+        styleSize,
+        styleVariant,
+      )}
       {...props}
     >
       {children}
