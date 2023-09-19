@@ -1,10 +1,11 @@
-import { Suspense } from "react";
+import { lazy, Suspense } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { useUser } from "./contexts/user";
 import { useLoading } from "./contexts/loading";
 
 
 import Loading from "./layouts/Loading";
+const LoggetOut = lazy(() => import("./layouts/LoggedOut"));
 
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
     layout = <Loading />;
   }
   else if (!user) {
-    layout = null;
+    layout = <LoggetOut />;
   }
   else if (user.role === "admin") {
     layout = null;
