@@ -1,4 +1,8 @@
-import { InputHTMLAttributes } from "react";
+import {
+  forwardRef,
+  ForwardedRef,
+  InputHTMLAttributes,
+} from "react";
 import { twMerge } from "tailwind-merge";
 
 
@@ -21,22 +25,26 @@ const inputSizes = {
 };
 
 
-function Input({
+function InputComponent({
   size = "md",
   variant = "primary",
   ...props
-}: IInput)
+}: IInput, ref: ForwardedRef<HTMLInputElement>)
 {
   const styleSize = inputSizes[size];
   const styleVariant = inputVariants[variant];
 
   return (
     <input
+      ref={ref}
       className={twMerge("border-2 outline-none", styleSize, styleVariant)}
       {...props}
     />
   );
 }
+
+
+const Input = forwardRef(InputComponent);
 
 
 export default Input;
