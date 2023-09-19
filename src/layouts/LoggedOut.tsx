@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons/faGoogle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   getAuth,
