@@ -1,3 +1,4 @@
+import { lazy } from "react";
 import { Outlet, useRoutes } from "react-router-dom";
 import { faHome } from "@fortawesome/free-solid-svg-icons/faHome";
 import { faDumbbell } from "@fortawesome/free-solid-svg-icons/faDumbbell";
@@ -6,9 +7,19 @@ import Navbar from "../components/Navbar";
 import Dropdown from "../components/Dropdown";
 
 
+const Cycles = lazy(() => import("../pages/trainee/Cycles"));
+const Events = lazy(() => import("../pages/trainee/Events"));
+const Payments = lazy(() => import("../pages/trainee/Payments"));
+const Personal = lazy(() => import("../pages/trainee/Personal"));
+const Trainings = lazy(() => import("../pages/trainee/Trainings"));
+const Workouts = lazy(() => import("../pages/trainee/Workouts"));
+const Subscriptions = lazy(() => import("../pages/trainee/Subscriptions"));
+const InbodyReadings = lazy(() => import("../pages/trainee/InbodyReadings"));
+
+
 const links = [
   { name:"Information", link: "/info" },
-  { name:"Sessions", link: "/sessions" },
+  { name:"Subscriptions", link: "/subs" },
   { name:"Payments", link: "/payments" },
 ];
 
@@ -16,24 +27,24 @@ const links = [
 const navLinks = [
   { link: "/", icon: faHome, },
   { link: "/cycles", icon: faDumbbell, },
-  { link: "/stats", icon: faChartSimple, },
+  { link: "/readings", icon: faChartSimple, },
 ];
 
 
 const routes = [{
   element: <BaseLayout />,
   children: [
-    { path: "/", element: <div>Events</div> },
-    { path:"/info", element: <div>Info</div> },
-    { path:"/stats", element: <div>Stats</div> },
-    { path:"/payments", element: <div>Payments</div> },
-    { path:"/sessions", element: <div>Sessions</div> },
+    { path: "/", element: <Events /> },
+    { path:"/info", element: <Personal /> },
+    { path:"/readings", element: <InbodyReadings /> },
+    { path:"/payments", element: <Payments /> },
+    { path:"/subs", element: <Subscriptions /> },
     {
       path: "cycles", element: <Outlet />, children: [
-        { index: true, element: <div>Cycles</div> },
+        { index: true, element: <Cycles /> },
         { path:":cycleId", element:<Outlet />, children: [
-          { index: true, element: <div>Trainings</div> },
-          { path: ":trainingId", element: <div>Workouts</div> },
+          { index: true, element: <Trainings /> },
+          { path: ":trainingId", element: <Workouts /> },
         ] },
       ],
     },
