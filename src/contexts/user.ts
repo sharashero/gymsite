@@ -11,7 +11,7 @@ const userContext = createContext<IUser | null>(null);
 
 
 export function useUser() {
-  return useContext(userContext);
+  return useContext(userContext) as IUser;
 }
 
 
