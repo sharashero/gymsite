@@ -33,6 +33,9 @@ function fromFirestore
     if (value instanceof Timestamp) {
       data[key] = value.toDate();
     }
+    else if (value instanceof Array && value[0] instanceof Timestamp) {
+      data[key] = value.map(v => v.toDate());
+    }
   }
 
   return {
