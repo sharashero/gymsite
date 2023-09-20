@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import {
   createDocument,
   readDocument,
@@ -5,11 +6,13 @@ import {
   deleteDocument,
 } from "./util/crud";
 import {
+  TPayment,
   TPaymentCreate,
   TPaymentRead,
   TPaymentUpdate,
   TPaymentDelete,
 } from "../../types/payment";
+import { useCollectionSnapshot } from "./util/snapshot";
 
 
 export function createPayment(userId: string, payment: TPaymentCreate) {
@@ -37,4 +40,10 @@ export function deletePayment(userId: string, payment: TPaymentDelete) {
   return deleteDocument<TPaymentDelete>("users", [
     userId, "payments", payment.id
   ]);
+}
+
+
+export function usePayments(userdId: string) {
+  const path = useMemo(() => [userdId, "payments"], [userdId]);
+  return useCollectionSnapshot<TPayment>("users", path);
 }
