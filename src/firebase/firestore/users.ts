@@ -10,6 +10,8 @@ import {
   TUserUpdate,
   TUserDelete,
 } from "../../types/user";
+import { useMemo } from "react";
+import { useDocumentSnapshot } from "./util/snapshot";
 
 
 export function createUser(user: TUserCreate) {
@@ -29,4 +31,17 @@ export function updateUser(user: TUserUpdate) {
 
 export function deleteUser(user: TUserDelete) {
   return deleteDocument<TUserDelete>("users", [user.id]);
+}
+
+
+export function useUserSnapshot(userId: string) {
+  const path = useMemo(() => [userId], [userId]);
+  return useDocumentSnapshot<TUserUpdate>("users", path) || {
+    id: userId,
+    name: "",
+    email: "",
+    photoURL: "",
+    phoneNumber: "",
+    dateOfBirth: new Date(),
+  };
 }
