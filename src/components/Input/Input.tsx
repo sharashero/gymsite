@@ -37,7 +37,7 @@ function InputComponent({
   return (
     <input
       ref={ref}
-      className={twMerge("border-2 outline-none", styleSize, styleVariant)}
+      className={twMerge("border-2 outline-none w-full", styleSize, styleVariant)}
       {...props}
     />
   );
