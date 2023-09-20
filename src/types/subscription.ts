@@ -32,6 +32,7 @@ export type TSubscsriptionUpdate = TObjectUpdate<TSubscsription>;
 
 export function mapCheckIns(checkIns: Date[]) {
   return checkIns.map(checkIn => ({
+    id: checkIn.toISOString(),
     date: checkIn,
     time: checkIn,
   }));
