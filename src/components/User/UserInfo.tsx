@@ -6,6 +6,7 @@ import {
   useUserSnapshot,
 } from "../../firebase/firestore/users";
 import { TDocument } from "../../types/common";
+import { dateToInput } from "../../util/date";
 
 
 interface IUserInfo {
@@ -19,7 +20,10 @@ function UserInfo({
 {
   const user = useUserSnapshot(userId);
   const { register, handleSubmit } = useForm<Required<TDocument>>({
-    values: { ...user, dateOfBirth: user.dateOfBirth?.toISOString().slice(0, 10) },
+    values: {
+      ...user,
+      dateOfBirth: user.dateOfBirth ? dateToInput(user.dateOfBirth) : ""
+    },
   });
 
   return (
