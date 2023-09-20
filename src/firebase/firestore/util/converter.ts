@@ -4,7 +4,7 @@ import {
   FirestoreDataConverter,
   DocumentData,
 } from "firebase/firestore";
-import { TDocument } from "../types/common";
+import { TDocument } from "../../../types/common";
 
 
 function toFirestore

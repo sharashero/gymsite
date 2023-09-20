@@ -9,7 +9,7 @@ import {
   TTrainingRead,
   TTrainingUpdate,
   TTrainingDelete,
-} from "./types/training";
+} from "../../types/training";
 
 
 export function createTraining(

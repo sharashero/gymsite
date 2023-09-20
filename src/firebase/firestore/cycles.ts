@@ -9,7 +9,7 @@ import {
   TCycleRead,
   TCycleUpdate,
   TCycleDelete,
-} from "./types/cycle";
+} from "../../types/cycle";
 
 
 export function createCycle(userId: string, cycle: TCycleCreate) {

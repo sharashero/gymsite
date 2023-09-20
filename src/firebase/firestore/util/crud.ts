@@ -7,7 +7,7 @@ import {
   collection,
   getFirestore,
 } from "firebase/firestore";
-import { TDocument } from "../types/common";
+import { TDocument } from "../../../types/common";
 import { createConverter } from "./converter";
 
 

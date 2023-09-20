@@ -9,7 +9,7 @@ import {
   TEventRead,
   TEventUpdate,
   TEventDelete,
-} from "./types/event";
+} from "../../types/event";
 
 
 export function createEvent(event: TEventCreate) {

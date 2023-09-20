@@ -9,7 +9,7 @@ import {
   TUserRead,
   TUserUpdate,
   TUserDelete,
-} from "./types/user";
+} from "../../types/user";
 
 
 export function createUser(user: TUserCreate) {

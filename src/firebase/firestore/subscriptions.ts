@@ -9,7 +9,7 @@ import {
   TSubscsriptionRead,
   TSubscsriptionUpdate,
   TSubscsriptionDelete,
-} from "./types/subscription";
+} from "../../types/subscription";
 
 
 export function createSub(userId: string, sub: TSubscsriptionCreate) {

@@ -9,7 +9,7 @@ import {
   TWorkoutRead,
   TWorkoutUpdate,
   TWorkoutDelete,
-} from "./types/workout";
+} from "../../types/workout";
 
 
 export function createWorkout(

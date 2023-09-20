@@ -9,7 +9,7 @@ import {
   TPaymentRead,
   TPaymentUpdate,
   TPaymentDelete,
-} from "./types/payment";
+} from "../../types/payment";
 
 
 export function createPayment(userId: string, payment: TPaymentCreate) {
