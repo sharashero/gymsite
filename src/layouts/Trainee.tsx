@@ -59,7 +59,7 @@ function BaseLayout() {
         <Dropdown links={links} />
       </div>
 
-      <div className="mb-16">
+      <div className="mb-24">
         <Outlet />
       </div>
 
