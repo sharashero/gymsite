@@ -5,11 +5,14 @@ import {
   deleteDocument,
 } from "./util/crud";
 import {
+  TWorkout,
   TWorkoutCreate,
   TWorkoutRead,
   TWorkoutUpdate,
   TWorkoutDelete,
 } from "../../types/workout";
+import { useMemo } from "react";
+import { useCollectionSnapshot } from "./util/snapshot";
 
 
 export function createWorkout(
@@ -57,4 +60,19 @@ export function deleteWorkout(
   return deleteDocument<TWorkoutDelete>("users", [
     userId, "cycles", cycleId, "trainings", trainingId, "workouts", workout.id
   ]);
+}
+
+
+export function useWorkouts(
+  userdId: string,
+  cycleId: string,
+  trainingId: string
+) {
+  const path = useMemo(() => [
+    userdId,
+    "cycles", cycleId,
+    "trainings", trainingId,
+    "workouts",
+  ], [userdId, cycleId, trainingId]);
+  return useCollectionSnapshot<TWorkout>("users", path);
 }
