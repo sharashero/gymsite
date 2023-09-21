@@ -1,8 +1,16 @@
 import PageLayout from "../PageLayout";
 import LineChart from "../../components/LineChart";
+import AddData from "../../components/Table/AddData";
 import { useUser } from "../../contexts/user";
-import { useReadings } from "../../firebase/firestore/readings";
+import {
+  useReadings,
+  createReading,
+  updateReading,
+  deleteReading,
+} from "../../firebase/firestore/readings";
+import { readingFields } from "../../types/reading";
 import { toDateString } from "../../util/date";
+import DataTable from "../../components/Table/DataTable";
 
 
 function InbodyReadings() {
@@ -16,6 +24,11 @@ function InbodyReadings() {
     <PageLayout title="Inbody">
 
       <div className="flex flex-col items-center gap-8 p-4">
+        <AddData dataFields={readingFields} onAdd={async (data) => {
+          await createReading(uid, data);
+        }}>
+          Add Inbody
+        </AddData>
 
         <div className="container bg-white">
           <LineChart
@@ -49,6 +62,31 @@ function InbodyReadings() {
             values={readings.map(reading => reading.fatPercent || 0)}
             secondary
           />
+        </div>
+
+        <div className="flex w-full flex-col items-center gap-4">
+          {readings.map(reading => (
+            <div
+              key={reading.id}
+              className="w-full max-w-[240px] rounded-lg bg-white p-4 shadow-lg"
+            >
+              <DataTable
+                data={reading}
+                dataFields={readingFields}
+                onEdit={async (data) => {
+                  await updateReading(uid, {
+                    id: reading.id,
+                    ...data
+                  });
+                }}
+                onDelete={async () => {
+                  await deleteReading(uid, {
+                    id: reading.id
+                  });
+                }}
+              />
+            </div>
+          ))}
         </div>
 
       </div>
