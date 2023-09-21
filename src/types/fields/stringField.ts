@@ -15,5 +15,6 @@ export function stringField(
   return {
     getDefault,
     format,
+    type: "text",
   };
 }

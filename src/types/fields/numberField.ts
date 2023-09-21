@@ -15,5 +15,6 @@ export function numberField(
   return {
     getDefault,
     format,
+    type: "number",
   };
 }

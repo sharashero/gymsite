@@ -15,5 +15,6 @@ export function timeField(
   return {
     getDefault,
     format,
+    type: "time",
   };
 }

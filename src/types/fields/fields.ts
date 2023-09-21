@@ -2,6 +2,7 @@ import { TDocument } from "../common";
 
 export type TField<K extends string, T> = {
   name: string;
+  type?: string;
   key: K;
   getDefault(): T;
   format(value: T): string;

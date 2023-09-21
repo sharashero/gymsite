@@ -15,5 +15,6 @@ export function dateField(
   return {
     getDefault,
     format,
+    type: "date",
   };
 }
