@@ -37,10 +37,14 @@ function EditDataComponent<T extends TField<string, unknown>>({
   dataFields.filter(
     field => field.type !== undefined
   ).forEach(field => {
+    values[field.key] = data[field.key];
+
+    if (values[field.key] === undefined) {
+      values[field.key] = field.getDefault();
+    }
+
     if (field.type === "date") {
-      values[field.key] = dateToInput(data[field.key] as Date);
-    } else {
-      values[field.key] = data[field.key];
+      values[field.key] = dateToInput(values[field.key] as Date);
     }
   });
 
