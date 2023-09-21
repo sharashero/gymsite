@@ -12,7 +12,7 @@ type TTrainingSet = {
 }
 
 
-type TTraining = {
+export type TTraining = {
   name: string;
   timestamp: Date;
   trainingSets: TTrainingSet[];

@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import {
   createDocument,
   readDocument,
@@ -10,6 +11,7 @@ import {
   TTrainingUpdate,
   TTrainingDelete,
 } from "../../types/training";
+import { useCollectionSnapshot } from "./util/snapshot";
 
 
 export function createTraining(
@@ -45,4 +47,14 @@ export function deleteTraining(
   return deleteDocument<TTrainingDelete>("users", [
     userId, "cycles", cycleId, "trainings", training.id
   ]);
+}
+
+
+export function useTrainings(userdId: string, cycleId: string) {
+  const path = useMemo(() => [
+    userdId,
+    "cycles", cycleId,
+    "trainings"
+  ], [userdId, cycleId]);
+  return useCollectionSnapshot<TTrainingUpdate>("users", path);
 }
