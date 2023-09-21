@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import {
   createDocument,
   readDocument,
@@ -10,6 +11,7 @@ import {
   TCycleUpdate,
   TCycleDelete,
 } from "../../types/cycle";
+import { useCollectionSnapshot } from "./util/snapshot";
 
 
 export function createCycle(userId: string, cycle: TCycleCreate) {
@@ -37,4 +39,10 @@ export function deleteCycle(userId: string, cycle: TCycleDelete) {
   return deleteDocument<TCycleDelete>("users", [
     userId, "cycles", cycle.id
   ]);
+}
+
+
+export function useCycles(userdId: string) {
+  const path = useMemo(() => [userdId, "cycles"], [userdId]);
+  return useCollectionSnapshot<TCycleUpdate>("users", path);
 }
