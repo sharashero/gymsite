@@ -132,6 +132,7 @@ function EditData<T extends TField<string, unknown>>({
     <Modal
       renderOpener={open => (
         <Button
+          size="sm"
           onClick={open}
         >
           {children}

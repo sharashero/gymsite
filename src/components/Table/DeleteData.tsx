@@ -69,6 +69,7 @@ function DeleteData({
     <Modal
       renderOpener={open => (
         <Button
+          size="sm"
           onClick={open}
         >
           {children}
