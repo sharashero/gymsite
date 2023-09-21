@@ -14,30 +14,30 @@ import {
 import { useCollectionSnapshot } from "./util/snapshot";
 
 
-export function createReading(userId: string, cycle: TReadingCreate) {
+export function createReading(userId: string, reading: TReadingCreate) {
   return createDocument<TReadingCreate>("users", [
     userId, "readings"
-  ], cycle);
+  ], reading);
 }
 
 
-export function readReading(userId: string, cycle: TReadingRead) {
+export function readReading(userId: string, reading: TReadingRead) {
   return readDocument<TReadingRead>("users", [
-    userId, "readings", cycle.id
+    userId, "readings", reading.id
   ]);
 }
 
 
-export function updateReading(userId: string, cycle: TReadingUpdate) {
+export function updateReading(userId: string, reading: TReadingUpdate) {
   return updateDocument<TReadingUpdate>("users", [
-    userId, "readings", cycle.id
-  ], cycle);
+    userId, "readings", reading.id
+  ], reading);
 }
 
 
-export function deleteReading(userId: string, cycle: TReadingDelete) {
+export function deleteReading(userId: string, reading: TReadingDelete) {
   return deleteDocument<TReadingDelete>("users", [
-    userId, "readings", cycle.id
+    userId, "readings", reading.id
   ]);
 }
 
