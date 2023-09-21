@@ -70,6 +70,7 @@ function DeleteData({
       renderOpener={open => (
         <Button
           size="sm"
+          variant="outline"
           onClick={open}
         >
           {children}

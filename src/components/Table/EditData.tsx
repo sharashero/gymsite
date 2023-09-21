@@ -133,6 +133,7 @@ function EditData<T extends TField<string, unknown>>({
       renderOpener={open => (
         <Button
           size="sm"
+          variant="outline"
           onClick={open}
         >
           {children}
