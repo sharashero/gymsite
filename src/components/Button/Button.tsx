@@ -38,7 +38,7 @@ function Button({
   return (
     <button
       className={twMerge(
-        "flex items-center disabled:cursor-wait",
+        "flex items-center justify-center disabled:cursor-wait",
         styleSize,
         styleVariant,
       )}
