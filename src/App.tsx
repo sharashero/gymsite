@@ -6,6 +6,7 @@ import { useLoading } from "./contexts/loading";
 
 import Loading from "./layouts/Loading";
 const LoggedOut = lazy(() => import("./layouts/LoggedOut"));
+const Trainee = lazy(() => import("./layouts/Trainee"));
 
 
 function App() {
@@ -24,9 +25,10 @@ function App() {
     layout = null;
   }
   else if (user.role === "trainee") {
-    layout = null;
+    layout = <Trainee />;
   }
   else {
+    // TODO add pending layout
     layout = null;
   }
 
@@ -41,3 +43,5 @@ function App() {
 
 
 export default App;
+// Data Table
+// firebase functions
