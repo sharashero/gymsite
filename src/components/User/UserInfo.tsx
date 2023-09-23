@@ -28,7 +28,7 @@ function UserInfo({
 
   return (
     <form
-      className="mx-auto flex max-w-xs flex-col items-center gap-8 rounded-2xl bg-white p-4 ring ring-neutral-200"
+      className="mx-auto flex w-full max-w-xs flex-col items-center gap-8 rounded-2xl bg-white p-4 ring ring-neutral-200"
       onSubmit={handleSubmit(updateUser)}
     >
       <div className="h-32 w-32 rounded-full ring-2 ring-neutral-300">
