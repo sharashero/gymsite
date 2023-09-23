@@ -1,3 +1,5 @@
+import { useMemo } from "react";
+import { where } from "firebase/firestore";
 import {
   createDocument,
   readDocument,
@@ -10,8 +12,10 @@ import {
   TUserUpdate,
   TUserDelete,
 } from "../../types/user";
-import { useMemo } from "react";
-import { useDocumentSnapshot } from "./util/snapshot";
+import {
+  useQuerySnapshot,
+  useDocumentSnapshot,
+} from "./util/snapshot";
 
 
 export function createUser(user: TUserCreate) {
@@ -44,4 +48,21 @@ export function useUserSnapshot(userId: string) {
     phoneNumber: "",
     dateOfBirth: new Date(),
   };
+}
+
+
+export function useUserByRole(role: string) {
+  const allUsers = useMemo(() => [], []);
+  const constraints = useMemo(() => {
+    const wheres = [where("role", "!=", "admin")];
+    if (role) {
+      wheres.push(where("role", "==", role));
+    }
+
+    return wheres;
+  }, [role]);
+
+  return useQuerySnapshot<TUserUpdate>(
+    "users", allUsers, constraints
+  );
 }
