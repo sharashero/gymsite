@@ -12,7 +12,7 @@ function Payments() {
   return (
     <PageLayout title="Payments">
       <div className="mx-auto max-w-xs rounded-2xl bg-white p-4 shadow-lg ring ring-neutral-200">
-        <Table data={[...payments]} fields={paymentFields} />
+        <Table data={payments} fields={paymentFields} />
       </div>
     </PageLayout>
   );

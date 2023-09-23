@@ -6,7 +6,6 @@ import {
   deleteDocument,
 } from "./util/crud";
 import {
-  TPayment,
   TPaymentCreate,
   TPaymentRead,
   TPaymentUpdate,
@@ -45,5 +44,5 @@ export function deletePayment(userId: string, payment: TPaymentDelete) {
 
 export function usePayments(userdId: string) {
   const path = useMemo(() => [userdId, "payments"], [userdId]);
-  return useCollectionSnapshot<TPayment>("users", path);
+  return useCollectionSnapshot<TPaymentUpdate>("users", path);
 }
