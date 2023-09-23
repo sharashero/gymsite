@@ -5,8 +5,9 @@ import { useLoading } from "./contexts/loading";
 
 
 import Loading from "./layouts/Loading";
-const LoggedOut = lazy(() => import("./layouts/LoggedOut"));
+const Admin = lazy(() => import("./layouts/Admin"));
 const Trainee = lazy(() => import("./layouts/Trainee"));
+const LoggedOut = lazy(() => import("./layouts/LoggedOut"));
 
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
     layout = <LoggedOut />;
   }
   else if (user.role === "admin") {
-    layout = null;
+    layout = <Admin />;
   }
   else if (user.role === "trainee") {
     layout = <Trainee />;
@@ -43,5 +44,3 @@ function App() {
 
 
 export default App;
-// Data Table
-// firebase functions
