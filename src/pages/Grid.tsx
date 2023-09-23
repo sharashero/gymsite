@@ -8,7 +8,7 @@ interface IGrid {
 
 function Grid({ children }: IGrid) {
   return (
-    <div className="grid w-full grid-cols-1 items-center justify-items-center gap-8 md:grid-cols-2 xl:grid-cols-3">
+    <div className="grid w-full grid-cols-1 justify-items-center gap-8 md:grid-cols-2 xl:grid-cols-3">
       {children}
     </div>
   );
