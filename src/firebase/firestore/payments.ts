@@ -12,6 +12,13 @@ import {
   TPaymentDelete,
 } from "../../types/payment";
 import { useCollectionSnapshot } from "./util/snapshot";
+import {
+  query,
+  where,
+  getDocs,
+  getFirestore,
+  collectionGroup,
+} from "firebase/firestore";
 
 
 export function createPayment(userId: string, payment: TPaymentCreate) {
@@ -45,4 +52,24 @@ export function deletePayment(userId: string, payment: TPaymentDelete) {
 export function usePayments(userdId: string) {
   const path = useMemo(() => [userdId, "payments"], [userdId]);
   return useCollectionSnapshot<TPaymentUpdate>("users", path);
+}
+
+
+export async function getAllPayments(from: Date, to: Date) {
+  const paymentsRef = query(
+    collectionGroup(getFirestore(), "payments"),
+    where("timestamp", ">=", from),
+    where("timestamp", "<=", to),
+  );
+  const paymentsSnapshot = await getDocs(paymentsRef);
+
+  return paymentsSnapshot.docs.map(document => {
+    const data = document.data();
+
+    return {
+      id: document.id,
+      amount: data.amount || 0,
+      timestamp: data.timestamp?.toDate() || new Date(),
+    };
+  }).sort((a, b) => b.timestamp - a.timestamp);
 }
