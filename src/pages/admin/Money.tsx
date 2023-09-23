@@ -22,7 +22,6 @@ function Money() {
   });
 
   async function onSubmit(data: { from: Date; to: Date; }) {
-    console.log(data);
     const payments = await getAllPayments(data.from, data.to);
     setResults({
       calculated: true,
