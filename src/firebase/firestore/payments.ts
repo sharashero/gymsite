@@ -51,7 +51,9 @@ export function deletePayment(userId: string, payment: TPaymentDelete) {
 
 export function usePayments(userdId: string) {
   const path = useMemo(() => [userdId, "payments"], [userdId]);
-  return useCollectionSnapshot<TPaymentUpdate>("users", path);
+  return useCollectionSnapshot<TPaymentUpdate>("users", path).sort(
+    (a, b) => (b.timestamp?.getTime() || 0) - (a.timestamp?.getTime() || 0)
+  );
 }
 
 

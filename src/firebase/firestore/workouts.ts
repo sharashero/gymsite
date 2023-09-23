@@ -74,5 +74,7 @@ export function useWorkouts(
     "trainings", trainingId,
     "workouts",
   ], [userdId, cycleId, trainingId]);
-  return useCollectionSnapshot<TWorkout>("users", path);
+  return useCollectionSnapshot<TWorkout>("users", path).sort(
+    (a, b) => b.short.localeCompare(a.short)
+  );
 }

@@ -44,5 +44,14 @@ export function deleteSub(userId: string, sub: TSubscsriptionDelete) {
 
 export function useSubscriptions(userId: string) {
   const path = useMemo(() => [userId, "subscriptions"], [userId]);
-  return useCollectionSnapshot<TSubscsriptionUpdate>("users", path);
+  return useCollectionSnapshot<TSubscsriptionUpdate>("users", path).map(
+    sub => {
+      sub.checkIns?.sort(
+        (a, b) => (b?.getTime() || 0) - (a?.getTime() || 0)
+      );
+      return sub;
+    }
+  ).sort(
+    (a, b) => (b.start?.getTime() || 0) - (a.start?.getTime() || 0)
+  );
 }

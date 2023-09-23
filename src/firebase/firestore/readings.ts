@@ -44,5 +44,7 @@ export function deleteReading(userId: string, reading: TReadingDelete) {
 
 export function useReadings(userdId: string) {
   const path = useMemo(() => [userdId, "readings"], [userdId]);
-  return useCollectionSnapshot<TReadingUpdate>("users", path);
+  return useCollectionSnapshot<TReadingUpdate>("users", path).sort(
+    (a, b) => (a.timestamp?.getTime() || 0) - (b.timestamp?.getTime() || 0)
+  );
 }
