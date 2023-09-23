@@ -10,7 +10,7 @@ import Button from "../components/Button";
 import PageLayout from "../pages/PageLayout";
 
 
-function Loading() {
+function LoggedOut() {
   const [inProgress, setInprogress] = useState(false);
 
 
@@ -42,4 +42,4 @@ function Loading() {
 }
 
 
-export default Loading;
+export default LoggedOut;

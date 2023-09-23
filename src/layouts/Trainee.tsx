@@ -71,9 +71,9 @@ function BaseLayout() {
 }
 
 
-function TraineeLayout() {
+function Trainee() {
   return useRoutes(routes);
 }
 
 
-export default TraineeLayout;
+export default Trainee;
