@@ -57,6 +57,6 @@ export function useTrainings(userdId: string, cycleId: string) {
     "trainings"
   ], [userdId, cycleId]);
   return useCollectionSnapshot<TTrainingUpdate>("users", path).sort(
-    (a, b) => (b.timestamp?.getTime() || 0) - (a.timestamp?.getTime() || 0)
+    (a, b) => (a.timestamp?.getTime() || 0) - (b.timestamp?.getTime() || 0)
   );
 }

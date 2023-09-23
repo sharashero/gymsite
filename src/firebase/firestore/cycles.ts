@@ -45,6 +45,6 @@ export function deleteCycle(userId: string, cycle: TCycleDelete) {
 export function useCycles(userdId: string) {
   const path = useMemo(() => [userdId, "cycles"], [userdId]);
   return useCollectionSnapshot<TCycleUpdate>("users", path).sort(
-    (a, b) => (b.timestamp?.getTime() || 0) - (a.timestamp?.getTime() || 0)
+    (a, b) => (a.timestamp?.getTime() || 0) - (b.timestamp?.getTime() || 0)
   );
 }
