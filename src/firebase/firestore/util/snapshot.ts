@@ -61,7 +61,7 @@ export function useCollectionSnapshot
 
 export function useQuerySnapshot
 <Type extends TDocument>
-(path: string, pathSegments: string[], ...constraints: QueryConstraint[]) {
+(path: string, pathSegments: string[], constraints: QueryConstraint[]) {
   const [snapshot, setSnapshot] = useState<Type[]>([]);
   const ref = useMemo(() => (
     query(
