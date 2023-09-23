@@ -2,8 +2,59 @@ rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
+  	function isAdmin() { return request.auth.token.role == 'admin'; }
+    function isTrainee() { return request.auth.token.role == 'trainee'; }
     match /{document=**} {
-      allow read, write: if false;
+      allow read, write: if isAdmin();
+    }
+
+    match /users/{userId} {
+      function isOwner() { return request.auth.uid == userId; }
+      allow read: if isOwner() && isTrainee();
+      allow update: if isOwner() && isTrainee()
+      && (request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+      'name', 'phoneNumber', 'dateOfBirth'
+      ]));
+
+      match /subscriptions/{subId} {
+        allow read: if isOwner() && isTrainee();
+      }      
+
+			match /payments/{paymentId} {
+        allow read: if isOwner() && isTrainee();
+      }
+
+			match /readings/{readingId} {
+        allow read, write: if isOwner() && isTrainee();
+      }
+      
+      match /cycles/{cycleId} {
+      	allow read: if isOwner() && isTrainee();
+        
+        match /trainings/{trainingId} {
+        	allow read: if isOwner() && isTrainee();
+          
+          match /workouts/{workoutId} {
+          	allow read: if isOwner() && isTrainee();
+        		allow update: if isOwner() && isTrainee()
+        		&& (request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+        		'done',
+        		]));
+          }
+        }
+    	}
+    }
+    
+    match /booking-views/{bookingViewId} {
+    	allow read: if isTrainee();
+    }    
+
+		match /booking-requests/{bookingRequestId} {
+    	allow read: if isTrainee()
+      && resource.data.userId == request.auth.uid;
+      allow create: if isTrainee()
+      && request.resource.data.userId == request.auth.uid
+      && request.resource.data.timestamp == request.time;
     }
   }
 }
