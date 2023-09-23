@@ -25,7 +25,7 @@ function Subscriptions() {
             key={subscription.id}
             className="mx-auto w-full max-w-xs rounded-2xl bg-white p-4 shadow-lg ring ring-neutral-200"
           >
-            <Table data={mapCheckIns(subscription.checkIns)} fields={checkInFields} />
+            <Table data={mapCheckIns(subscription.checkIns || [])} fields={checkInFields} />
           </div>
         ))}
       </div>
