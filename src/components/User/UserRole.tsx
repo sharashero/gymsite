@@ -28,7 +28,7 @@ function UserRole({
   }
 
   return (
-    <div className="w-full min-w-[240px] overflow-hidden rounded-xl border-2 border-neutral-400 bg-white p-4 shadow-lg">
+    <div className="w-full max-w-xs overflow-hidden rounded-xl border-2 border-neutral-400 bg-white p-4 shadow-lg">
       <form
         className="flex w-full flex-col items-center gap-8"
         onSubmit={handleSubmit}
